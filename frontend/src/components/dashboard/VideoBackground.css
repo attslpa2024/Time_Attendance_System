@@ -1,0 +1,94 @@
+/* Transparent Video Background Overlay */
+.video-background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Temporarily bring to front to test */
+  overflow: hidden;
+  pointer-events: none; /* Don't interfere with user interactions */
+  animation: overlayFadeIn 1s ease-out;
+}
+
+@keyframes overlayFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fingerback-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9; /* Increased opacity to make video more visible */
+  animation: videoZoom 30s ease-in-out infinite;
+}
+
+@keyframes videoZoom {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+
+.video-background-overlay-filter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.35) 0%,
+    rgba(30, 58, 138, 0.25) 50%,
+    rgba(15, 23, 42, 0.35) 100%
+  );
+  z-index: 1;
+  animation: filterPulse 8s ease-in-out infinite;
+}
+
+@keyframes filterPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .fingerback-video {
+    opacity: 0.1; /* Even more transparent on mobile */
+    animation: none; /* Disable zoom animation on mobile for performance */
+  }
+  
+  .video-background-overlay-filter {
+    background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.85) 0%,
+      rgba(30, 58, 138, 0.75) 50%,
+      rgba(15, 23, 42, 0.85) 100%
+    );
+    animation: none;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fingerback-video,
+  .video-background-overlay-filter {
+    animation: none;
+  }
+}

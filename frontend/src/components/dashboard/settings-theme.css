@@ -1,0 +1,239 @@
+:root {
+  /* Light theme (default) - Modern Blue Theme */
+  --bg: #FFFFFF;
+  --surface: #F8FAFC;
+  --surface-elevated: #FFFFFF;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-disabled: #94A3B8;
+  --divider: #E2E8F0;
+  --border: #CBD5E1;
+  --primary: #2563EB;
+  --primary-hover: #1D4ED8;
+  --primary-light: #DBEAFE;
+  --secondary: #64748B;
+  --success: #10B981;
+  --success-light: #D1FAE5;
+  --warning: #F59E0B;
+  --warning-light: #FEF3C7;
+  --error: #EF4444;
+  --error-light: #FEE2E2;
+  --info: #0EA5E9;
+  --info-light: #E0F2FE;
+  --link: #2563EB;
+  --highlight: #FEF3C7;
+  --btn-red-bg: #EF4444;
+  --btn-red-hover: #F87171;
+  --btn-red-active: #DC2626;
+  --btn-red-text: #FFFFFF;
+  
+  /* Animation & Transition */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-primary: 0 8px 24px rgba(37, 99, 235, 0.2);
+}
+
+[data-theme="dark"] {
+  /* Dark theme values - Modern Blue Dark Theme */
+  --bg: #0F172A;
+  --surface: #1E293B;
+  --surface-elevated: #334155;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-disabled: #475569;
+  --divider: #334155;
+  --border: #475569;
+  --primary: #3B82F6;
+  --primary-hover: #60A5FA;
+  --primary-light: #1E3A5F;
+  --secondary: #94A3B8;
+  --success: #34D399;
+  --success-light: #064E3B;
+  --warning: #FBBF24;
+  --warning-light: #78350F;
+  --error: #F87171;
+  --error-light: #7F1D1D;
+  --info: #38BDF8;
+  --info-light: #0C4A6E;
+  --link: #60A5FA;
+  --highlight: #422006;
+  --btn-red-bg: #EF4444;
+  --btn-red-hover: #F87171;
+  --btn-red-active: #DC2626;
+  --btn-red-text: #FFFFFF;
+  
+  /* Shadows for dark mode */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5);
+  --shadow-primary: 0 8px 24px rgba(59, 130, 246, 0.3);
+}
+
+/* Apply theme variables to common elements used in the Settings UI */
+body {
+  background: var(--bg) !important;
+  color: var(--text-primary);
+}
+
+.settings-page {
+  background: transparent;
+}
+
+.card, .list-group, .list-group-item {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+  transition: var(--transition-normal);
+}
+
+.card {
+  box-shadow: var(--shadow-md);
+  border-radius: 16px;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.list-group .list-group-item {
+  border-bottom: 1px solid var(--divider) !important;
+  transition: var(--transition-fast);
+}
+
+.list-group .list-group-item:hover {
+  background: var(--primary-light) !important;
+}
+
+.list-group .active {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%) !important;
+  color: #fff !important;
+  border-color: var(--primary) !important;
+  box-shadow: var(--shadow-primary);
+}
+
+.form-label {
+  color: var(--text-primary) !important;
+}
+
+.form-text {
+  color: var(--text-secondary) !important;
+}
+
+.form-control, .form-select {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--divider);
+}
+
+.bg-light {
+  background: var(--surface) !important;
+}
+
+.btn-danger-custom {
+  background: var(--btn-red-bg);
+  color: var(--btn-red-text);
+  border: 1px solid var(--btn-red-active);
+}
+.btn-danger-custom:hover { background: var(--btn-red-hover); }
+.btn-danger-custom:active { background: var(--btn-red-active); }
+
+/* small helper for card spacing in dark */
+[data-theme="dark"] .card { box-shadow: 0 6px 20px rgba(0,0,0,0.6); }
+
+/* Table and data grid fixes to ensure rows/text remain visible in dark mode */
+table, .table, .dataTable, .dataTables_wrapper table {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+}
+
+/* Table header */
+table thead th, .table thead th {
+  background: rgba(255,255,255,0.02) !important;
+  color: var(--text-secondary) !important;
+  border-bottom: 1px solid var(--divider) !important;
+}
+
+/* Table rows */
+table tbody tr td, .table tbody tr td {
+  color: var(--text-primary) !important;
+  background: transparent !important;
+  border-bottom: 1px solid var(--divider) !important;
+}
+
+/* Empty row placeholders or datatables empty text */
+.dataTables_empty, .table .empty, .no-data {
+  color: var(--text-secondary) !important;
+}
+
+/* Badges/pills */
+.badge, .pill {
+  color: var(--text-primary) !important;
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid rgba(255,255,255,0.03) !important;
+}
+
+/* Ensure inputs inside table filters are readable */
+table input, table select, .dataTables_wrapper input, .dataTables_wrapper select {
+  color: var(--text-primary) !important;
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid var(--divider) !important;
+}
+
+/* Stronger overrides for table content to avoid faint/transparent text */
+table th, table td, .table th, .table td, .dataTables_wrapper th, .dataTables_wrapper td {
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Anchor/text inside table cells */
+table td a, .table td a, table td span, .table td span, table td p, .table td p {
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Ensure header text stands out */
+table thead th, .table thead th {
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  opacity: 1 !important;
+}
+
+/* Row backgrounds: alternate subtle surface color for readability */
+table tbody tr:nth-child(odd), .table tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,0.01) !important;
+}
+table tbody tr:nth-child(even), .table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.00) !important;
+}
+
+/* DataTables inserted elements (filter, paginations) */
+.dataTables_wrapper .dataTables_filter input, .dataTables_wrapper .dataTables_length select {
+  background: rgba(255,255,255,0.02) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--divider) !important;
+}
+
+/* Badges: ensure status badges keep readable foreground */
+.badge-success { background: var(--success) !important; color: #fff !important; }
+.badge-warning { background: var(--warning) !important; color: #000 !important; }
+.badge-danger, .badge-error { background: var(--error) !important; color: #fff !important; }
+.badge-info { background: var(--info) !important; color: #fff !important; }
+
+/* Ensure disabled/placeholder text still readable */
+.text-muted, .muted, .placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 1 !important;
+}
+
+/* Force outlines/borders in dark mode to be visible */
+input, select, textarea, .form-control {
+  border-color: var(--border) !important;
+}
+
+
